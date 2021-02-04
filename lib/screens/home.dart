@@ -321,7 +321,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   child: Container(
                     width: double.infinity,
                     margin: EdgeInsets.only(
-                      top: Dimens.marginTiny,
+                      top: Dimens.marginSmall,
                       left: Dimens.marginDefault,
                       right: Dimens.marginDefault
                     ),
@@ -370,7 +370,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                                   size: 20,
                                 ),
                                 SizedBox(
-                                  width: Dimens.marginTiny,
+                                  width: Dimens.marginSmall,
                                 ),
                                 Text(
                                   '주소 검색',
@@ -400,7 +400,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                                     size: 20,
                                   ),
                                   SizedBox(
-                                    width: Dimens.marginTiny,
+                                    width: Dimens.marginSmall,
                                   ),
                                   Text(
                                     'QR코드',
@@ -581,18 +581,17 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                     child: Container(
                       width: double.infinity,
                       margin: EdgeInsets.all(Dimens.marginDefault),
-                      child: CoreButton(
+                      child: CupertinoButton(
+                        minSize: 50,
                         color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.circular(10),
-                        onTap: numbers.length == 7 ? () => searchElevator() : null,
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            '검색',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: FONT_FAMILY
-                            ),
+                        disabledColor: Theme.of(context).colorScheme.primary,
+                        onPressed: numbers.length == 7 ? () => searchElevator() : null,
+                        child: Text(
+                          '검색',
+                          style: TextStyle(
+                            color: Theme.of(context).textTheme.bodyText1.color,
+                            fontSize: 16,
+                            fontFamily: FONT_FAMILY
                           ),
                         ),
                       ),

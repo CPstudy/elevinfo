@@ -156,3 +156,26 @@ class Elevator {
     }
   }
 }
+
+class InspectData {
+  String startDate;       // 운행시작일
+  String endDate;         // 운행종료일
+  String inspectDate;     // 검사일자
+  String inspectOrg;      // 검사기관
+  String inspectType;     // 검사종류
+  String inspectResult;   // 합격유무
+  int receiptNo;          // 접수번호
+
+  final String noData = '정보 없음';
+
+  InspectData.fromJSON(Map<String, dynamic> json) {
+    startDate = json['applcBeDt'] ?? noData;
+    endDate = json['applcEnDt'] ?? noData;
+    inspectDate = json['inspctDt'] ?? noData;
+    inspectOrg = json['inspctInsttNm'] ?? noData;
+    inspectType = json['inspctKind'] ?? noData;
+    inspectResult = json['psexamYn'] ?? noData;
+    receiptNo = json['recptnNo'] ?? noData;
+  }
+
+}

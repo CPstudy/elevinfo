@@ -1,6 +1,7 @@
 import 'package:elevinfo/essential.dart';
 import 'package:elevinfo/managers/databasehelper.dart';
 import 'package:elevinfo/screens/list.dart';
+import 'package:flutter/cupertino.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -107,11 +108,11 @@ class _SearchScreenState extends State<SearchScreen> {
                 children: <Widget>[
                   textInput(addressController1, '주소'),
                   Container(
-                    height: Dimens.marginTiny,
+                    height: Dimens.marginSmall,
                   ),
                   textInput(addressController2, '건물명'),
                   Container(
-                    height: Dimens.marginTiny,
+                    height: Dimens.marginSmall,
                   ),
                 ],
               ),
@@ -121,24 +122,22 @@ class _SearchScreenState extends State<SearchScreen> {
               child: Container(
                 width: double.infinity,
                 margin: EdgeInsets.all(Dimens.marginDefault),
-                child: CoreButton(
+                child: CupertinoButton(
+                  minSize: 50,
                   color: Theme.of(context).colorScheme.primary,
-                  borderRadius: BorderRadius.circular(10),
-                  onTap: () async {
+                  onPressed: () async {
                     await DatabaseHelper().addHistoryAddress(addressController1.text, addressController2.text);
                     Navigator.push(context, MaterialPageRoute(builder: (context) => ListScreen(
                       addressController1.text,
                       addressController2.text
                     )));
                   },
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      '검색',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontFamily: FONT_FAMILY
-                      ),
+                  child: Text(
+                    '검색',
+                    style: TextStyle(
+                      color: Theme.of(context).textTheme.bodyText1.color,
+                      fontSize: 16,
+                      fontFamily: FONT_FAMILY
                     ),
                   ),
                 ),

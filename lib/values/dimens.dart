@@ -1,5 +1,6 @@
 class Dimens {
-  static const double marginTiny = 8;
+  static const double marginTiny = 4;
+  static const double marginSmall = 8;
   static const double marginDefault = 16;
   static const double marginMedium = 24;
   static const double marginLarge = 32;

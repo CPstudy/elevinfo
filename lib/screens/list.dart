@@ -120,7 +120,7 @@ class _ListScreenState extends State<ListScreen> {
               ),
               Flexible(
                 child: Container(
-                  margin: EdgeInsets.only(top: Dimens.marginTiny, bottom: Dimens.marginTiny, right: Dimens.marginTiny),
+                  margin: EdgeInsets.only(top: Dimens.marginSmall, bottom: Dimens.marginSmall, right: Dimens.marginSmall),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -134,11 +134,14 @@ class _ListScreenState extends State<ListScreen> {
                         style: Theme.of(context).textTheme.headline4,
                       ),
                       Container(
-                        height: Dimens.marginTiny,
+                        height: Dimens.marginSmall,
                       ),
                       Text(
                         '${elevators[index].depart} ${elevators[index].type}',
                         style: Theme.of(context).textTheme.headline5,
+                      ),
+                      SizedBox(
+                        height: Dimens.marginTiny,
                       ),
                       Row(
                         children: <Widget>[
@@ -147,7 +150,7 @@ class _ListScreenState extends State<ListScreen> {
                             style: Theme.of(context).textTheme.headline5,
                           ),
                           Container(
-                              width: Dimens.marginTiny
+                              width: Dimens.marginSmall
                           ),
                           Expanded(
                             child: Text(
@@ -166,7 +169,7 @@ class _ListScreenState extends State<ListScreen> {
                             style: Theme.of(context).textTheme.headline5,
                           ),
                           Container(
-                            width: Dimens.marginTiny
+                            width: Dimens.marginSmall
                           ),
                           Text(
                             elevators[index].serviceFloor,
@@ -181,7 +184,7 @@ class _ListScreenState extends State<ListScreen> {
                             style: Theme.of(context).textTheme.headline5,
                           ),
                           Container(
-                              width: Dimens.marginTiny
+                              width: Dimens.marginSmall
                           ),
                           Text(
                             (elevators[index].speedMin == null) ? '' : '${elevators[index].speedMin}m/min',
@@ -196,7 +199,7 @@ class _ListScreenState extends State<ListScreen> {
                             style: Theme.of(context).textTheme.headline5,
                           ),
                           Container(
-                              width: Dimens.marginTiny
+                              width: Dimens.marginSmall
                           ),
 
                           Text(
@@ -224,11 +227,11 @@ class _ListScreenState extends State<ListScreen> {
         children: <Widget>[
           ListView.separated(
             controller: _scrollController,
-            padding: EdgeInsets.all(Dimens.marginTiny),
+            padding: EdgeInsets.all(Dimens.marginSmall),
             scrollDirection: Axis.vertical,
             itemCount: elevators.length + 1,
             separatorBuilder: (BuildContext context, int index) => Container(
-              height: Dimens.marginTiny,
+              height: Dimens.marginSmall,
             ),
             itemBuilder: (BuildContext context, int index){
               if(index != elevators.length) {
@@ -255,7 +258,7 @@ class _ListScreenState extends State<ListScreen> {
                     size: 32,
                   ),
                   Container(
-                    height: Dimens.marginTiny,
+                    height: Dimens.marginSmall,
                   ),
                   Text(
                     '검색 결과가 없습니다.',

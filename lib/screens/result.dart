@@ -1,4 +1,5 @@
 import 'package:elevinfo/essential.dart';
+import 'package:elevinfo/screens/inspect_page.dart';
 import 'package:flutter/services.dart';
 
 class ResultScreen extends StatefulWidget {
@@ -28,13 +29,22 @@ class _ResultScreenState extends State<ResultScreen> {
 
     return TitleScaffold(
       title: elevator.no,
+      titleRightChild: IconButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => InspectPage(elevator: widget.elevator)));
+        },
+        icon: Icon(
+          Icons.assignment_sharp,
+          color: Colors.white,
+        ),
+      ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         child: Stack(
           children: <Widget>[
             Container(
               width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.all(Dimens.marginTiny),
+              margin: EdgeInsets.all(Dimens.marginSmall),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,7 +59,7 @@ class _ResultScreenState extends State<ResultScreen> {
                     ),
                   ),
                   Container(
-                    height: Dimens.marginTiny,
+                    height: Dimens.marginSmall,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -99,7 +109,7 @@ class _ResultScreenState extends State<ResultScreen> {
                                 ),
                               ),
                               Container(
-                                height: Dimens.marginTiny,
+                                height: Dimens.marginSmall,
                               ),
                               LimitedBox(
                                 maxWidth: 100,
@@ -214,12 +224,12 @@ class _ResultScreenState extends State<ResultScreen> {
                 child: Container(
                     width: double.infinity,
                     margin: EdgeInsets.only(
-                      left: Dimens.marginTiny,
-                      right: Dimens.marginTiny,
+                      left: Dimens.marginSmall,
+                      right: Dimens.marginSmall,
                       top: 268,
-                      bottom: Dimens.marginTiny,
+                      bottom: Dimens.marginSmall,
                     ),
-                    padding: EdgeInsets.all(Dimens.marginTiny),
+                    padding: EdgeInsets.all(Dimens.marginSmall),
                     decoration: BoxDecoration(
                       color: Theme.of(context).cardColor,
                       borderRadius: BorderRadius.circular(5),
@@ -252,7 +262,7 @@ class _ResultScreenState extends State<ResultScreen> {
                         child: Container(
                           color: Colors.transparent,
                           height: 45,
-                          margin: EdgeInsets.symmetric(horizontal: Dimens.marginTiny),
+                          margin: EdgeInsets.symmetric(horizontal: Dimens.marginSmall),
                           child: Stack(
                             children: <Widget>[
                               Align(

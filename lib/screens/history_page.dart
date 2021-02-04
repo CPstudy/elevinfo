@@ -156,10 +156,12 @@ class _HistoryPageState extends State<HistoryPage> {
                 String searchDate = history['search_date'];
                 int searchType = history['search_type'];
 
-                DateTime today = DateTime.parse(searchDate);
-                int year = today.year;
-                int month = today.month;
-                int day = today.day;
+                DateTime date = DateTime.parse(searchDate);
+                int year = date.year;
+                int month = date.month;
+                int day = date.day;
+                int hour = date.hour;
+                int minute = date.minute;
 
                 String header;
                 switch(searchType) {
@@ -198,7 +200,7 @@ class _HistoryPageState extends State<HistoryPage> {
                   },
                   child: Container(
                     height: 88,
-                    padding: EdgeInsets.all(Dimens.marginTiny),
+                    padding: EdgeInsets.all(Dimens.marginSmall),
                     decoration: BoxDecoration(
                       color: Theme.of(context).cardColor,
                       borderRadius: BorderRadius.circular(5.0),
@@ -217,7 +219,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                 children: [
                                   Container(
                                     margin: EdgeInsets.only(
-                                      right: Dimens.marginTiny,
+                                      right: Dimens.marginSmall,
                                     ),
                                     decoration: BoxDecoration(
                                       color: Theme.of(context).cardColor,
@@ -233,7 +235,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                   ),
                                   Container(
                                     child: Text(
-                                      sprintf('%04d-%d-%d', [year, month, day]),
+                                      sprintf('%02d:%02d', [hour, minute]),
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                         height: 1,
@@ -259,7 +261,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                       style: Theme.of(context).textTheme.headline5,
                                     ),
                                     Container(
-                                      width: Dimens.marginTiny
+                                      width: Dimens.marginSmall
                                     ),
                                     Text(
                                       no ?? '',
@@ -284,7 +286,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                       style: Theme.of(context).textTheme.headline5,
                                     ),
                                     Container(
-                                      width: Dimens.marginTiny
+                                      width: Dimens.marginSmall
                                     ),
                                     Text(
                                       address1 ?? '',
@@ -309,7 +311,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                       style: Theme.of(context).textTheme.headline5,
                                     ),
                                     Container(
-                                      width: Dimens.marginTiny
+                                      width: Dimens.marginSmall
                                     ),
                                     Text(
                                       address2 ?? '',
@@ -345,7 +347,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 );
               },
               separatorBuilder: (context, index) {
-                List<String> week = ['월', '화', '수', '목', '금', '토', '일'];
+                List<String> week = ['', '월', '화', '수', '목', '금', '토', '일'];
 
                 if(index > 0) {
                   Map<String, dynamic> today = histories[index];
@@ -353,8 +355,8 @@ class _HistoryPageState extends State<HistoryPage> {
                   DateTime tDate = DateTime.parse(today['search_date']);
                   DateTime yDate = DateTime.parse(yesterday['search_date']);
 
-                  String tText = sprintf('%04d년 %2d월 %2d일 %s요일', [tDate.year, tDate.month, tDate.day, week[tDate.weekday]]);
-                  String yText = sprintf('%04d년 %2d월 %2d일 %s요일', [yDate.year, yDate.month, yDate.day, week[yDate.weekday]]);
+                  String tText = sprintf('%04d년 %d월 %d일 %s요일', [tDate.year, tDate.month, tDate.day, week[tDate.weekday]]);
+                  String yText = sprintf('%04d년 %d월 %d일 %s요일', [yDate.year, yDate.month, yDate.day, week[yDate.weekday]]);
 
                   if(tText != yText) {
                     return Container(
@@ -372,7 +374,7 @@ class _HistoryPageState extends State<HistoryPage> {
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(
-                              horizontal: Dimens.marginTiny,
+                              horizontal: Dimens.marginSmall,
                             ),
                             child: Text(
                               tText.toString(),
@@ -396,7 +398,7 @@ class _HistoryPageState extends State<HistoryPage> {
                   Map<String, dynamic> today = histories[index];
                   DateTime tDate = DateTime.parse(today['search_date']);
 
-                  String tText = sprintf('%04d년 %2d월 %2d일 %s요일', [tDate.year, tDate.month, tDate.day, week[tDate.weekday]]);
+                  String tText = sprintf('%04d년 %d월 %d일 %s요일', [tDate.year, tDate.month, tDate.day, week[tDate.weekday]]);
 
                   return Container(
                     margin: EdgeInsets.only(
@@ -412,7 +414,7 @@ class _HistoryPageState extends State<HistoryPage> {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(
-                            horizontal: Dimens.marginTiny,
+                            horizontal: Dimens.marginSmall,
                           ),
                           child: Text(
                             tText.toString(),
@@ -434,7 +436,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 }
 
                 return SizedBox(
-                  height: Dimens.marginTiny,
+                  height: Dimens.marginSmall,
                 );
               },
             );

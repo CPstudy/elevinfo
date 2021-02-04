@@ -1,5 +1,7 @@
 import 'package:cupertino_back_gesture/cupertino_back_gesture.dart';
 import 'package:elevinfo/essential.dart';
+import 'package:sprintf/sprintf.dart';
+import 'package:http/http.dart' as http;
 
 class ThemeProvider with ChangeNotifier {
 
@@ -112,6 +114,49 @@ class ThemeProvider with ChangeNotifier {
     Config().setTheme(type).then((value){
       notifyListeners();
     });
+  }
+}
 
+class ElevatorProvider with ChangeNotifier {
+  /// 승강기 검사 이력 불러오는 부분
+
+  final int pageOfNum = 50;
+  bool hasNextPage = true;
+  int inspectPage = 0;
+  List<InspectData> inspects = List();
+
+  Future<List<InspectData>> getInspect(String elevatorNo) async {
+    if(!hasNextPage) {
+      print('has no page');
+      return inspects;
+    } else {
+      int beforeCount = inspects.length;
+      inspectPage++;
+      final String url = URL_INSPECT + '&_type=json&elevator_no=' + elevatorNo + '&numOfRows=' + pageOfNum.toString() + '&pageNo=' + inspectPage.toString();
+      print('url = $url');
+
+      try {
+        var response = await http.get(url);
+
+        Map<String, dynamic> body = json.decode(utf8.decode(response.bodyBytes));
+        var result = body['response']['body'];
+
+
+        if(result['items'] != '') {
+          List<dynamic> items = result['items']['item'] as List;
+          inspects.addAll(items.map<InspectData>((json) => InspectData.fromJSON(json)).toList());
+        }
+
+      } catch(e) {
+        print(e);
+      }
+
+      if(beforeCount <= inspects.length) {
+        hasNextPage = false;
+        inspectPage--;
+      }
+
+      return inspects;
+    }
   }
 }

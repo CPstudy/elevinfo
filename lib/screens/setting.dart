@@ -94,7 +94,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               Container(
-                                height: Dimens.marginTiny,
+                                height: Dimens.marginSmall,
                               ),
                               Text(
                                 '라이트',
@@ -104,7 +104,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                 ),
                               ),
                               Container(
-                                height: Dimens.marginTiny,
+                                height: Dimens.marginSmall,
                               ),
                               (){
                                 if(Config().type == LIGHT_MODE) {
@@ -136,7 +136,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               Container(
-                                height: Dimens.marginTiny,
+                                height: Dimens.marginSmall,
                               ),
                               Text(
                                 '다크',
@@ -146,7 +146,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                 ),
                               ),
                               Container(
-                                height: Dimens.marginTiny,
+                                height: Dimens.marginSmall,
                               ),
                               (){
                                 if(Config().type == DARK_MODE) {
@@ -178,7 +178,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               Container(
-                                height: Dimens.marginTiny,
+                                height: Dimens.marginSmall,
                               ),
                               Text(
                                 '시스템',
@@ -188,7 +188,7 @@ class _SettingScreenState extends State<SettingScreen> {
                                 ),
                               ),
                               Container(
-                                height: Dimens.marginTiny,
+                                height: Dimens.marginSmall,
                               ),
                                 (){
                                 if(Config().type == SYSTEM_MODE) {
@@ -226,7 +226,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     Align(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        '2.1.0',
+                        '2.3.0',
                         style: TextStyle(
                             fontSize: 14,
                             fontFamily: FONT_FAMILY
